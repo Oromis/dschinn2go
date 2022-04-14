@@ -4,12 +4,13 @@ import {asNumber, LABEL_W, VAL_W} from "./Hero";
 
 export default function DschinnView({ value, onChange }) {
     const {
-        summonElement = null, stars = 0, location = 0, trueName = 0, clothes = 0, recentlySummonedDaemon = false,
+        summonElement = '', stars = 0, location = 0, trueName = 0, clothes = 0, recentlySummonedDaemon = false,
         usesBloodMagic = false, giftSummoning = 0, giftControl = 0, purity = 0, tenTimesMaterial = false,
+        doubledSpellDuration = false,
     } = value
 
-    const setConfig = (field, value) => {
-        onChange({ ...value, [field]: value })
+    const setConfig = (field, newVal) => {
+        onChange({ ...value, [field]: newVal })
     }
 
     return (
@@ -20,6 +21,7 @@ export default function DschinnView({ value, onChange }) {
                         <Col sm={LABEL_W}>Element</Col>
                         <Form.Group as={Col} sm={VAL_W} controlId="summonElement">
                             <Form.Select value={summonElement} onChange={e => setConfig('summonElement', e.target.value)}>
+                                <option value="">--- Auswählen ---</option>
                                 <option value="feuer">Feuer</option>
                                 <option value="wasser">Wasser</option>
                                 <option value="eis">Eis</option>
@@ -50,10 +52,10 @@ export default function DschinnView({ value, onChange }) {
                         controlId="stars"
                         value={stars}
                         onChange={e => setConfig('stars', asNumber(e.target.value))}
-                        min={-3}
-                        max={7}
-                        maxLabel="Schlecht"
-                        minLabel="Gut"
+                        min={-7}
+                        max={3}
+                        maxLabel="Gut"
+                        minLabel="Schlecht"
                     />
                 </Col>
                 <Col md={6}>
@@ -64,8 +66,8 @@ export default function DschinnView({ value, onChange }) {
                         onChange={e => setConfig('location', asNumber(e.target.value))}
                         min={-7}
                         max={7}
-                        maxLabel="Schlecht"
-                        minLabel="Gut"
+                        maxLabel="Gut"
+                        minLabel="Schlecht"
                     />
                 </Col>
             </Row>
@@ -107,6 +109,15 @@ export default function DschinnView({ value, onChange }) {
                         </Form.Group>
                     </Row>
                 </Col>
+                <Col md={6}>
+                    <Form.Group controlId="doubleSpellDuration">
+                        <Form.Check
+                            checked={doubledSpellDuration}
+                            onChange={e => setConfig('doubledSpellDuration', e.target.checked)}
+                            label="Zauberdauer verdoppelt?"
+                        />
+                    </Form.Group>
+                </Col>
             </Row>
             <Row className="mt-3">
                 <Col md={6}>
@@ -137,8 +148,8 @@ export default function DschinnView({ value, onChange }) {
                         onChange={e => setConfig('giftSummoning', asNumber(e.target.value))}
                         min={-7}
                         max={7}
-                        minLabel="Gut"
-                        maxLabel="Schlecht"
+                        maxLabel="Gut"
+                        minLabel="Schlecht"
                     />
                 </Col>
                 <Col md={6}>
@@ -149,8 +160,8 @@ export default function DschinnView({ value, onChange }) {
                         onChange={e => setConfig('giftControl', asNumber(e.target.value))}
                         min={-7}
                         max={7}
-                        minLabel="Gut"
-                        maxLabel="Schlecht"
+                        maxLabel="Gut"
+                        minLabel="Schlecht"
                     />
                 </Col>
             </Row>

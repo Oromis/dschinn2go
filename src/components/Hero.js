@@ -38,8 +38,6 @@ export default function Hero({ hero, onChange }) {
                         </Col>
                     </Form.Group>
                 </Col>
-            </Row>
-            <Row>
                 <Col md={6}>
                     <Form.Group as={Row} className="mb-3" controlId="heroMu">
                         <Form.Label column sm={LABEL_W} className="">Mut</Form.Label>
@@ -56,13 +54,19 @@ export default function Hero({ hero, onChange }) {
                         </Col>
                     </Form.Group>
                 </Col>
-            </Row>
-            <Row>
                 <Col md={6}>
                     <Form.Group as={Row} className="mb-3" controlId="heroCh">
                         <Form.Label column sm={LABEL_W} className="">Charisma</Form.Label>
                         <Col sm={VAL_W}>
                             <Form.Control value={hero.charisma ?? ''} onChange={e => setNum('charisma', e)} type="number" placeholder="10" />
+                        </Col>
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group as={Row} className="mb-3" controlId="heroKl">
+                        <Form.Label column sm={LABEL_W} className="">Klugheit</Form.Label>
+                        <Col sm={VAL_W}>
+                            <Form.Control value={hero.klugheit ?? ''} onChange={e => setNum('klugheit', e)} type="number" placeholder="10" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -139,8 +143,8 @@ export default function Hero({ hero, onChange }) {
                         controlId="heroSchwAuss"
                         value={hero.schwacheAusstrahlung ?? 0}
                         onChange={e => setNum('schwacheAusstrahlung', e)}
-                        min={0}
-                        max={5}
+                        min={-5}
+                        max={0}
                     />
                 </Col>
                 <Col md={6}>
@@ -149,8 +153,8 @@ export default function Hero({ hero, onChange }) {
                         controlId="heroStig"
                         value={hero.stigma ?? 0}
                         onChange={e => setNum('stigma', e)}
-                        min={0}
-                        max={3}
+                        min={-3}
+                        max={0}
                     />
                 </Col>
             </Row>
