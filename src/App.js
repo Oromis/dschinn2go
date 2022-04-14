@@ -48,7 +48,11 @@ function loadHero() {
     }
 }
 
-const DSCHINN_DIFFICULTY = 8
+const difficultyTable = {
+    elementarerDiener: 4,
+    dschinnruf: 8,
+    elementarerMeister: 12,
+}
 
 export const elementAffinityTable = {
     feuer: 'wasser',
@@ -86,7 +90,8 @@ function App() {
     const calcZfpRemaining = () => {
         const summonElement = dschinnConfig.summonElement
 
-        let result = (hero[dschinnConfig.summonType] ?? 0) - DSCHINN_DIFFICULTY
+        let result = (hero[dschinnConfig.summonType] ?? 0)
+        result -= difficultyTable[dschinnConfig.summonType] ?? 0
         result += conditional(hero[`${summonElement}Begabung`], 2)
         result += conditional(hero[`${summonElement}Merkmalskenntnis`], 2)
         if (!hero.elementarharmonisierteAura) {

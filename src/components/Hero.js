@@ -42,7 +42,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroMu">
                         <Form.Label column sm={LABEL_W} className="">Mut</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.mut ?? ''} onChange={e => setNum('mut', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.mut ?? ''} onChange={e => setNum('mut', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -50,7 +50,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroIn">
                         <Form.Label column sm={LABEL_W} className="">Intuition</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.intuition ?? ''} onChange={e => setNum('intuition', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.intuition ?? ''} onChange={e => setNum('intuition', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -58,7 +58,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroCh">
                         <Form.Label column sm={LABEL_W} className="">Charisma</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.charisma ?? ''} onChange={e => setNum('charisma', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.charisma ?? ''} onChange={e => setNum('charisma', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -66,7 +66,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroKl">
                         <Form.Label column sm={LABEL_W} className="">Klugheit</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.klugheit ?? ''} onChange={e => setNum('klugheit', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.klugheit ?? ''} onChange={e => setNum('klugheit', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -74,7 +74,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroDiener">
                         <Form.Label column sm={LABEL_W} className="">ZfW Elementarer Diener</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.elementarerDiener ?? ''} onChange={e => setNum('elementarerDiener', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.elementarerDiener ?? ''} onChange={e => setNum('elementarerDiener', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -82,7 +82,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroDschinnenruf">
                         <Form.Label column sm={LABEL_W} className="">ZfW Dschinnruf</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.dschinnruf ?? ''} onChange={e => setNum('dschinnruf', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.dschinnruf ?? ''} onChange={e => setNum('dschinnruf', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -90,7 +90,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroMeister">
                         <Form.Label column sm={LABEL_W} className="">ZfW Elementarer Meister</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.elementarerMeister ?? ''} onChange={e => setNum('elementarerMeister', e)} type="number" placeholder="10" />
+                            <Form.Control value={hero.elementarerMeister ?? ''} onChange={e => setNum('elementarerMeister', e)} type="number" placeholder="0" />
                         </Col>
                     </Form.Group>
                 </Col>

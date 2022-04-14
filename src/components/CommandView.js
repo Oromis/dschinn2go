@@ -4,13 +4,19 @@ import Footer from "./Footer";
 import {ROLL_VIEW} from "./Views";
 import {conditional, elementAffinityTable} from "../App";
 
+const difficultyTable = {
+    elementarerDiener: 2,
+    dschinnruf: 4,
+    elementarerMeister: 8,
+}
+
 export default function CommandView({ hero, dschinnConfig, summoningZfp, onChangeView, zfpStar }) {
     let zfw = hero[dschinnConfig.summonType];
     const controlBase = Math.round((hero.mut + hero.intuition + 2 * hero.charisma + zfw) / 5)
 
     const calcControlValue = base => {
         let result = base
-        result -= 4
+        result -= difficultyTable[dschinnConfig.summonType] ?? 0
         result += Math.round(dschinnConfig.trueName / 3)
         result += conditional(hero.elementalAffinity, 3)
         result += conditional(hero[`${dschinnConfig.summonElement}Begabung`], 2)
