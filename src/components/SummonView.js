@@ -23,7 +23,7 @@ export default function SummonView({ hero, onChangeHero, dschinnConfig, onChange
                     </Card.Body>
                 </Card>
             </Container>
-            <Footer summoningZfp={summoningZfp} heroSkill={hero.dschinnruf}>
+            <Footer summoningZfp={summoningZfp} heroSkill={hero[dschinnConfig.summonType]}>
                 <Button variant="primary" onClick={() => onChangeView(ROLL_VIEW)}>Herbeirufen!</Button>
             </Footer>
         </>

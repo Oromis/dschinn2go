@@ -34,7 +34,7 @@ export default function Hero({ hero, onChange }) {
                     <Form.Group as={Row} className="mb-3" controlId="heroName">
                         <Form.Label column sm={LABEL_W} className="">Name</Form.Label>
                         <Col sm={VAL_W}>
-                            <Form.Control value={hero.name ?? ''} onChange={setName} type="text" placeholder="Name" />
+                            <Form.Control value={hero.name} onChange={setName} type="text" placeholder="Name" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -71,10 +71,26 @@ export default function Hero({ hero, onChange }) {
                     </Form.Group>
                 </Col>
                 <Col md={6}>
+                    <Form.Group as={Row} className="mb-3" controlId="heroDiener">
+                        <Form.Label column sm={LABEL_W} className="">ZfW Elementarer Diener</Form.Label>
+                        <Col sm={VAL_W}>
+                            <Form.Control value={hero.elementarerDiener ?? ''} onChange={e => setNum('elementarerDiener', e)} type="number" placeholder="10" />
+                        </Col>
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
                     <Form.Group as={Row} className="mb-3" controlId="heroDschinnenruf">
                         <Form.Label column sm={LABEL_W} className="">ZfW Dschinnruf</Form.Label>
                         <Col sm={VAL_W}>
                             <Form.Control value={hero.dschinnruf ?? ''} onChange={e => setNum('dschinnruf', e)} type="number" placeholder="10" />
+                        </Col>
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group as={Row} className="mb-3" controlId="heroMeister">
+                        <Form.Label column sm={LABEL_W} className="">ZfW Elementarer Meister</Form.Label>
+                        <Col sm={VAL_W}>
+                            <Form.Control value={hero.elementarerMeister ?? ''} onChange={e => setNum('elementarerMeister', e)} type="number" placeholder="10" />
                         </Col>
                     </Form.Group>
                 </Col>
@@ -99,6 +115,18 @@ export default function Hero({ hero, onChange }) {
                                 checked={hero.elementarist ?? false}
                                 onChange={e => setBool('elementarist', e)}
                                 label="Elementarist"
+                            />
+                        </Col>
+                    </Form.Group>
+                </Col>
+                <Col md={6}>
+                    <Form.Group as={Row} className="mb-3" controlId="heroEleAura">
+                        <Col sm={LABEL_W} />
+                        <Col sm={VAL_W}>
+                            <Form.Check
+                                checked={hero.elementarharmonisierteAura ?? false}
+                                onChange={e => setBool('elementarharmonisierteAura', e)}
+                                label="Elementarharmonisierte Aura"
                             />
                         </Col>
                     </Form.Group>

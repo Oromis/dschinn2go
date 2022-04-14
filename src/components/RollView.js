@@ -4,15 +4,16 @@ import Footer from "./Footer";
 import {COMMAND_VIEW, SUMMON_VIEW} from "./Views";
 import {asNumber} from "./Hero";
 
-export default function RollView({ hero, summoningZfp, onChangeView, zfpStar, onZfpStarChange }) {
+export default function RollView({ hero, dschinnConfig, summoningZfp, onChangeView, zfpStar, onZfpStarChange }) {
+    let zfw = hero[dschinnConfig.summonType]
     let message
     if (summoningZfp < 0) {
         message = `Du hast keine ZfP übrig. Zusätzlich ist die Probe um ${Math.abs(summoningZfp)} erschwert.`
-    } else if (summoningZfp <= hero.dschinnruf) {
+    } else if (summoningZfp <= zfw) {
         message = `Du hast noch ${summoningZfp} ZfP übrig zum Zaubern.`
     } else {
-        message = `Du hast deinen vollen ZfW von ${hero.dschinnruf} übrig und zusätzlich eine Erleichterung ` +
-            `von ${summoningZfp - hero.dschinnruf}.`
+        message = `Du hast deinen vollen ZfW von ${zfw} übrig und zusätzlich eine Erleichterung ` +
+            `von ${summoningZfp - zfw}.`
     }
 
     return (
@@ -34,7 +35,6 @@ export default function RollView({ hero, summoningZfp, onChangeView, zfpStar, on
                                             value={zfpStar}
                                             onChange={e => onZfpStarChange(e.target.value.length > 0 ? asNumber(e.target.value) : '')}
                                             type="number"
-                                            placeholder="10"
                                             className="w-auto"
                                         />
                                         <span>ZfP übrig.</span>
@@ -48,7 +48,7 @@ export default function RollView({ hero, summoningZfp, onChangeView, zfpStar, on
                     </Col>
                 </Row>
             </Container>
-            <Footer summoningZfp={summoningZfp} heroSkill={hero.dschinnruf} />
+            <Footer summoningZfp={summoningZfp} heroSkill={zfw} />
         </>
     );
 }

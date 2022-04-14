@@ -6,7 +6,7 @@ export default function DschinnView({ value, onChange }) {
     const {
         summonElement = '', stars = 0, location = 0, trueName = 0, clothes = 0, recentlySummonedDaemon = false,
         usesBloodMagic = false, giftSummoning = 0, giftControl = 0, purity = 0, tenTimesMaterial = false,
-        doubledSpellDuration = false,
+        doubledSpellDuration = false, summonType,
     } = value
 
     const setConfig = (field, newVal) => {
@@ -15,8 +15,21 @@ export default function DschinnView({ value, onChange }) {
 
     return (
         <Form>
-            <Row className="mt-3">
-                <Col md={6}>
+            <Row>
+                <Col md={6} className="mt-3">
+                    <Row>
+                        <Col sm={LABEL_W}>Wen?</Col>
+                        <Form.Group as={Col} sm={VAL_W} controlId="summonType">
+                            <Form.Select value={summonType} onChange={e => setConfig('summonType', e.target.value)}>
+                                <option value="">--- Auswählen ---</option>
+                                <option value="elementarerDiener">Elementarer Diener</option>
+                                <option value="dschinnruf">Dschinn</option>
+                                <option value="elementarerMeister">Elementarer Meister</option>
+                            </Form.Select>
+                        </Form.Group>
+                    </Row>
+                </Col>
+                <Col md={6} className="mt-3">
                     <Row>
                         <Col sm={LABEL_W}>Element</Col>
                         <Form.Group as={Col} sm={VAL_W} controlId="summonElement">
@@ -32,7 +45,7 @@ export default function DschinnView({ value, onChange }) {
                         </Form.Group>
                     </Row>
                 </Col>
-                <Col md={6}>
+                <Col md={6} className="mt-3">
                     <SliderElement
                         label="Wahrer Name"
                         controlId="trueName"

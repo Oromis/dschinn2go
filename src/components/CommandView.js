@@ -5,7 +5,8 @@ import {ROLL_VIEW} from "./Views";
 import {conditional, elementAffinityTable} from "../App";
 
 export default function CommandView({ hero, dschinnConfig, summoningZfp, onChangeView, zfpStar }) {
-    const controlBase = Math.round((hero.mut + hero.intuition + 2 * hero.charisma + hero.dschinnruf) / 5)
+    let zfw = hero[dschinnConfig.summonType];
+    const controlBase = Math.round((hero.mut + hero.intuition + 2 * hero.charisma + zfw) / 5)
 
     const calcControlValue = base => {
         let result = base
@@ -14,8 +15,10 @@ export default function CommandView({ hero, dschinnConfig, summoningZfp, onChang
         result += conditional(hero.elementalAffinity, 3)
         result += conditional(hero[`${dschinnConfig.summonElement}Begabung`], 2)
         result += conditional(hero[`${dschinnConfig.summonElement}Merkmalskenntnis`], 2)
-        result -= conditional(hero[`${elementAffinityTable[dschinnConfig.summonElement]}Begabung`], 2)
-        result -= conditional(hero[`${elementAffinityTable[dschinnConfig.summonElement]}Merkmalskenntnis`], 2)
+        if (!hero.elementarharmonisierteAura) {
+            result -= conditional(hero[`${elementAffinityTable[dschinnConfig.summonElement]}Begabung`], 2)
+            result -= conditional(hero[`${elementAffinityTable[dschinnConfig.summonElement]}Merkmalskenntnis`], 2)
+        }
         result -= conditional(hero.daemonischBegabung,4)
         result -= conditional(hero.daemonischMerkmalskenntnis, 4)
         result -= conditional(hero.paktierer, 9)
@@ -45,7 +48,7 @@ export default function CommandView({ hero, dschinnConfig, summoningZfp, onChang
                     </Col>
                 </Row>
             </Container>
-            <Footer summoningZfp={summoningZfp} heroSkill={hero.dschinnruf} />
+            <Footer summoningZfp={summoningZfp} heroSkill={zfw} />
         </>
     );
 }
