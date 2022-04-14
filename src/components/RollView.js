@@ -41,7 +41,7 @@ export default function RollView({ hero, dschinnConfig, summoningZfp, onChangeVi
                                     </div>
                                 </Card.Body>
                                 <Card.Footer className="text-end">
-                                    <Button onClick={() => onChangeView(COMMAND_VIEW)}>Der Dschinn ist da!</Button>
+                                    <Button onClick={() => onChangeView(COMMAND_VIEW)}>Herbeirufung erfolgreich!</Button>
                                 </Card.Footer>
                             </Card>
                         </Form>
